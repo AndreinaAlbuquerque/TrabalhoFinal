@@ -10,28 +10,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
-public class EventAdpater extends ArrayAdapter<Event> {
+public class AdaptarEvento extends ArrayAdapter<Evento> {
 
 
-    public EventAdpater(@NonNull Context context, List<Event> events) {
-        super(context, 0,events);
+    public AdaptarEvento(@NonNull Context context, List<Evento> eventos) {
+        super(context, 0, eventos);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Event event = getItem(position);
+        Evento evento = getItem(position);
 
         if(convertView == null)
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.event_cell,parent,false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.evento_cell,parent,false);
 
         TextView eventCellTV = convertView.findViewById(R.id.eventCellTV);
 
-        String eventTitle = event.getName() + event.getServico() + " "+ CalendarUtils.formateTime(event.getTime());
+        String eventTitle = evento.getName() + " " + evento.getServico() + " "+ evento.getHora();
         eventCellTV.setText(eventTitle);
         return convertView;
     }

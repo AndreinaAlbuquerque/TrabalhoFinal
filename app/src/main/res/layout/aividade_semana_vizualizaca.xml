@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".WeekViewActivity">
+    android:background="@drawable/fundo"
+    tools:context=".VizualizarAtividadeSemana">
 
 
 
@@ -21,11 +22,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/back"
-            android:textColor="@color/blue"
+            android:textColor="@color/black"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="previousWeekAction"
-            android:textSize="20sp"/>
+            android:textSize="30sp"/>
 
         <TextView
             android:id="@+id/monthYearTV"
@@ -42,11 +43,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/forward"
-            android:textColor="@color/blue"
+            android:textColor="@color/black"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="nextWeekAction"
-            android:textSize="20sp"/>
+            android:textSize="30sp"/>
 
     </LinearLayout>
 
@@ -60,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="DOM"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -69,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SEG"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -78,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TER"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -87,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="QUA"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -96,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="QUI"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -105,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SEX"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -114,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SAB"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -131,11 +132,11 @@
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nova Marcação"
-        android:textColor="@color/blue"
-        android:background="@null"
+        android:textColor="@color/black"
+        android:background="@color/white"
         android:textStyle="bold"
         android:onClick="newEventAction"
         android:layout_gravity="center"

@@ -7,7 +7,7 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class CalendarUtils {
+public class UtilizcaoCalendario {
 
     public static LocalDate selectedDate;
 
@@ -34,7 +34,7 @@ public class CalendarUtils {
 
         int daysInMonth = yearMonth.lengthOfMonth();
 
-        LocalDate firstOfMonth = CalendarUtils.selectedDate.withDayOfMonth(1);
+        LocalDate firstOfMonth = UtilizcaoCalendario.selectedDate.withDayOfMonth(1);
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
 
         for(int i = 1; i <= 42; i++)

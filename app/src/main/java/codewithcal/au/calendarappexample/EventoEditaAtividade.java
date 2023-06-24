@@ -9,38 +9,39 @@ import android.widget.TextView;
 
 import java.time.LocalTime;
 
-public class EventEditActivity extends AppCompatActivity {
+public class EventoEditaAtividade extends AppCompatActivity {
 
 
     private EditText eventNameET;
 
     private EditText eventServET;
-    private TextView eventDateTV,eventTimeTV;
 
-    private LocalTime time;
+    private EditText eventHoraET;
+    private TextView eventDateTV;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_edit);
+        setContentView(R.layout.atividade_evento_edita);
         iniWigets();
-        time = LocalTime.now();
-        eventDateTV.setText("Data: "+ CalendarUtils.formateDate(CalendarUtils.selectedDate));
-        eventTimeTV.setText("Hora: "+ CalendarUtils.formateTime(time));
-    }
+        eventDateTV.setText("Data: "+ UtilizcaoCalendario.formateDate(UtilizcaoCalendario.selectedDate));
+        }
 
     private void iniWigets() {
         eventNameET = findViewById(R.id.eventNameET);
         eventServET = findViewById(R.id.eventServET);
         eventDateTV = findViewById(R.id.eventDateTV);
-        eventTimeTV = findViewById(R.id.eventTimeTV);
+        eventHoraET = findViewById(R.id.eventHoraET);
     }
 
     public void saveEventAction(View view) {
         String eventName  = eventNameET.getText().toString();
         String eventServ = eventServET.getText().toString();
-        Event newEvent = new Event(eventName,eventServ,CalendarUtils.selectedDate, time);
-        Event.eventsList.add(newEvent);
+        String eventHora = eventHoraET.getText().toString();
+        Evento newEvento = new Evento(eventName,eventServ,UtilizcaoCalendario.selectedDate,eventHora);
+        Evento.eventsList.add(newEvento);
         finish();
     }
 }

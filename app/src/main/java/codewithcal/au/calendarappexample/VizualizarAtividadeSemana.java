@@ -1,26 +1,22 @@
 package codewithcal.au.calendarappexample;
 
-import static codewithcal.au.calendarappexample.CalendarUtils.daysInMonthArray;
-import static codewithcal.au.calendarappexample.CalendarUtils.daysInWeekArray;
-import static codewithcal.au.calendarappexample.CalendarUtils.monthYearFromDate;
+import static codewithcal.au.calendarappexample.UtilizcaoCalendario.daysInWeekArray;
+import static codewithcal.au.calendarappexample.UtilizcaoCalendario.monthYearFromDate;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.savedstate.SavedStateRegistry;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
-public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener{
+public class VizualizarAtividadeSemana extends AppCompatActivity implements AdaptarCalendario.OnItemListener{
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
@@ -33,7 +29,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_week_view);
+        setContentView(R.layout.aividade_semana_vizualizaca);
         initWidgets();
         setWeekView();
     }
@@ -47,25 +43,25 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
 
     private void setWeekView()
     {
-        monthYearText.setText(monthYearFromDate(CalendarUtils.selectedDate));
-        ArrayList<LocalDate> days = daysInWeekArray(CalendarUtils.selectedDate);
+        monthYearText.setText(monthYearFromDate(UtilizcaoCalendario.selectedDate));
+        ArrayList<LocalDate> days = daysInWeekArray(UtilizcaoCalendario.selectedDate);
 
-        CalendarAdapter calendarAdapter = new CalendarAdapter(days, this);
+        AdaptarCalendario adaptarCalendario = new AdaptarCalendario(days, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
-        calendarRecyclerView.setAdapter(calendarAdapter);
+        calendarRecyclerView.setAdapter(adaptarCalendario);
         setEvetAdpater();
     }
 
 
 
     public void previousWeekAction(View view) {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusWeeks(1);
+        UtilizcaoCalendario.selectedDate = UtilizcaoCalendario.selectedDate.minusWeeks(1);
         setWeekView();
     }
 
     public void nextWeekAction(View view) {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusWeeks(1);
+        UtilizcaoCalendario.selectedDate = UtilizcaoCalendario.selectedDate.plusWeeks(1);
         setWeekView();
     }
 
@@ -73,7 +69,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     public void onItemClick(int position, LocalDate date)
     {
 
-            CalendarUtils.selectedDate = date;
+            UtilizcaoCalendario.selectedDate = date;
             setWeekView();
     }
 
@@ -84,14 +80,14 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     private void setEvetAdpater() {
-        ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
-        EventAdpater eventAdpater  = new EventAdpater(getApplicationContext(),dailyEvents);
-        eventListView.setAdapter(eventAdpater);
+        ArrayList<Evento> dailyEventos = Evento.eventsForDate(UtilizcaoCalendario.selectedDate);
+        AdaptarEvento adaptarEvento = new AdaptarEvento(getApplicationContext(), dailyEventos);
+        eventListView.setAdapter(adaptarEvento);
     }
 
     public void newEventAction(View view) {
 
-    startActivity(new Intent(this,EventEditActivity.class));
+    startActivity(new Intent(this, EventoEditaAtividade.class));
 
     }
 }

@@ -1,7 +1,7 @@
 package codewithcal.au.calendarappexample;
 
-import static codewithcal.au.calendarappexample.CalendarUtils.daysInMonthArray;
-import static codewithcal.au.calendarappexample.CalendarUtils.monthYearFromDate;
+import static codewithcal.au.calendarappexample.UtilizcaoCalendario.daysInMonthArray;
+import static codewithcal.au.calendarappexample.UtilizcaoCalendario.monthYearFromDate;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,14 +11,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
+public class MainActivity extends AppCompatActivity implements AdaptarCalendario.OnItemListener
 {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
@@ -30,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initWidgets();
-        CalendarUtils.selectedDate = LocalDate.now();
+        UtilizcaoCalendario.selectedDate = LocalDate.now();
         setMonthView();
     }
 
@@ -42,26 +39,26 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     private void setMonthView()
     {
-        monthYearText.setText(monthYearFromDate(CalendarUtils.selectedDate));
-        ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtils.selectedDate);
+        monthYearText.setText(monthYearFromDate(UtilizcaoCalendario.selectedDate));
+        ArrayList<LocalDate> daysInMonth = daysInMonthArray(UtilizcaoCalendario.selectedDate);
 
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
+        AdaptarCalendario adaptarCalendario = new AdaptarCalendario(daysInMonth, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
-        calendarRecyclerView.setAdapter(calendarAdapter);
+        calendarRecyclerView.setAdapter(adaptarCalendario);
     }
 
 
 
     public void previousMonthAction(View view)
     {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusMonths(1);
+        UtilizcaoCalendario.selectedDate = UtilizcaoCalendario.selectedDate.minusMonths(1);
         setMonthView();
     }
 
     public void nextMonthAction(View view)
     {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusMonths(1);
+        UtilizcaoCalendario.selectedDate = UtilizcaoCalendario.selectedDate.plusMonths(1);
         setMonthView();
     }
 
@@ -73,13 +70,13 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
         if(date != null) {
 
-            CalendarUtils.selectedDate = date;
+            UtilizcaoCalendario.selectedDate = date;
             setMonthView();
         }
     }
 
 public void weeklyAction(View view){
-    startActivity(new Intent(this, WeekViewActivity.class));
+    startActivity(new Intent(this, VizualizarAtividadeSemana.class));
 
 }
 

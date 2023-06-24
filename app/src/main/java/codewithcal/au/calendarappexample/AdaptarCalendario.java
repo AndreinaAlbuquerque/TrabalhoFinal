@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
+class AdaptarCalendario extends RecyclerView.Adapter<CalendarioVizualizacaoApoio>
 {
     private final ArrayList<LocalDate> days;
     private final OnItemListener onItemListener;
 
-    public CalendarAdapter(ArrayList<LocalDate> days, OnItemListener onItemListener)
+    public AdaptarCalendario(ArrayList<LocalDate> days, OnItemListener onItemListener)
     {
         this.days = days;
         this.onItemListener = onItemListener;
@@ -25,28 +25,28 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 
     @NonNull
     @Override
-    public CalendarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public CalendarioVizualizacaoApoio onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.calendar_cell, parent, false);
+        View view = inflater.inflate(R.layout.calendario_cell, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         if(days.size()>15)
             layoutParams.height = (int) (parent.getHeight() * 0.166666666);
         else
             layoutParams.height = (int) parent.getHeight();
-        return new CalendarViewHolder( view, onItemListener , days);
+        return new CalendarioVizualizacaoApoio( view, onItemListener , days);
     }
 
     @SuppressLint("SuspiciousIndentation")
     @Override
-    public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull CalendarioVizualizacaoApoio holder, int position)
     {
         final LocalDate date = days.get(position);
         if (date == null)
             holder.dayOfMonth.setText("");
         else {
             holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
-            if (date.equals(CalendarUtils.selectedDate))
+            if (date.equals(UtilizcaoCalendario.selectedDate))
             holder.parentView.setBackgroundColor(Color.LTGRAY);
         }
     }

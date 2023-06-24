@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".EventEditActivity">
+    android:background="@drawable/fundo"
+    tools:context=".EventoEditaAtividade">
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity = "center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Nome:"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textAlignment="center"
         android:textColor="@color/black"/>
 
@@ -31,9 +32,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity = "center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Serviço:"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textAlignment="center"
         android:textColor="@color/black"/>
 
@@ -53,28 +54,36 @@
         android:layout_gravity = "center"
         android:layout_marginTop="20dp"
         android:text="Data:"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textAlignment="center"
         android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/eventTimeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity = "center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Hora:"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textAlignment="center"
         android:textColor="@color/black"/>
 
+    <EditText
+        android:id="@+id/eventHoraET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:ems="10"
+        android:inputType="text"/>
+
     <Button
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salvar"
-        android:textColor="@color/blue"
-        android:background="@null"
+        android:textColor="@color/black"
+         android:background="@color/white"
         android:textStyle="bold"
         android:onClick="saveEventAction"
         android:layout_gravity="center"

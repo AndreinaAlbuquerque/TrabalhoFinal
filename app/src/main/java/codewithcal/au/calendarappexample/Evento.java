@@ -1,37 +1,34 @@
 package codewithcal.au.calendarappexample;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Event {
+public class Evento {
 
-    public static ArrayList<Event> eventsList = new ArrayList<>();
+    public static ArrayList<Evento> eventsList = new ArrayList<>();
 
-    public static ArrayList<Event> eventsForDate(LocalDate date){
-        ArrayList<Event> events = new ArrayList<>();
-        for(Event event : eventsList){
-            if(event.getDate().equals(date))
-                events.add(event);
+    public static ArrayList<Evento> eventsForDate(LocalDate date){
+        ArrayList<Evento> eventos = new ArrayList<>();
+        for(Evento evento : eventsList){
+            if(evento.getDate().equals(date))
+                eventos.add(evento);
         }
 
-        return events;
+        return eventos;
     }
 
 
 
-    private String name,servico;
+    private String name,servico,hora;
 
     private LocalDate date;
-    private LocalTime time;
 
-
-    public Event(String name,String servico, LocalDate date, LocalTime time) {
+    public Evento(String name, String servico, LocalDate date, String hora) {
         this.name = name;
         this.servico = servico;
         this.date = date;
-        this.time = time;
+        this.hora = hora;
     }
 
     public String getName() {
@@ -59,11 +56,11 @@ public class Event {
         this.date = date;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public String getHora() {
+        return hora;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 }
